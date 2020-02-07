@@ -20,3 +20,4 @@ namespace AppNiZiAPI.Models
         public string Description { get; set; }
     }
 }
+// Description has been added 

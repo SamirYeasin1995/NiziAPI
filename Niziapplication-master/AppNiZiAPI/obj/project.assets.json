@@ -7187,11 +7187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\NL1_1893124059745\\Downloads\\Niziapplication-master\\Niziapplication-master\\AppNiZiAPI\\AppNiZiAPI.csproj",
+      "projectUniqueName": "C:\\Users\\NL1_1893124059745\\Source\\Repos\\SamirYeasin1995\\NiziAPI\\Niziapplication-master\\AppNiZiAPI\\AppNiZiAPI.csproj",
       "projectName": "AppNiZiAPI",
-      "projectPath": "C:\\Users\\NL1_1893124059745\\Downloads\\Niziapplication-master\\Niziapplication-master\\AppNiZiAPI\\AppNiZiAPI.csproj",
+      "projectPath": "C:\\Users\\NL1_1893124059745\\Source\\Repos\\SamirYeasin1995\\NiziAPI\\Niziapplication-master\\AppNiZiAPI\\AppNiZiAPI.csproj",
       "packagesPath": "C:\\Users\\NL1_1893124059745\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NL1_1893124059745\\Downloads\\Niziapplication-master\\Niziapplication-master\\AppNiZiAPI\\obj\\",
+      "outputPath": "C:\\Users\\NL1_1893124059745\\Source\\Repos\\SamirYeasin1995\\NiziAPI\\Niziapplication-master\\AppNiZiAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NL1_1893124059745\\AppData\\Roaming\\NuGet\\NuGet.Config",
