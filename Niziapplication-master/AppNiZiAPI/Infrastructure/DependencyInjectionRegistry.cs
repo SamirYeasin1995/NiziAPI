@@ -16,17 +16,14 @@ namespace AppNiZiAPI.Infrastructure
             services.AddSingleton<IAccountRepository, AccountRepository>();
             services.AddSingleton<IPatientRepository, PatientRepository>();
             services.AddSingleton<IDoctorRepository, DoctorRepository>();
-
             services.AddSingleton<IAuthorizationRepository, AuthorizationRepository>();
             services.AddSingleton<IAuthorization, Authorization>();
-
             services.AddSingleton<IDietaryManagementRepository, DietaryManagementRepository>();
             services.AddSingleton<IFoodRepository, FoodRepository>();
             services.AddSingleton<IMealRepository, MealRepository>();
             services.AddSingleton<IWaterRepository, WaterRepository>();
             services.AddSingleton<IConsumptionRepository, ConsumptionRespository>();
             services.AddSingleton<IConversationRepository, ConversationRepository>();
-
             return services;
         }
 
@@ -36,7 +33,6 @@ namespace AppNiZiAPI.Infrastructure
             services.AddSingleton<IQueryHelper, QueryHelper>();
             services.AddSingleton<IMessageHandler, MessageHandler>();
             services.AddSingleton<IResponseHandler, ResponseHandler>();
-
             return services;
         }
 

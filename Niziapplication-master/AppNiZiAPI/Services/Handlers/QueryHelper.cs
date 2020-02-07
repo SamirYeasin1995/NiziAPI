@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AppNiZiAPI.Models.Handler
 {
@@ -17,18 +16,12 @@ namespace AppNiZiAPI.Models.Handler
 
     public class QueryHelper : IQueryHelper
     {
-        /// <summary>
-        /// Tries to extract an integer from a query for a given variable. 
-        /// If unsuccesful for some reason, it will simply return 0.
-        /// </summary>
         public int ExtractIntegerFromRequestQuery(string variableName, HttpRequest req)
         {
             int data = 0;
 
-            // Get the data from the query for the given variable
             string dataFromQuery = req.Query[variableName];
 
-            // If there's data set and it's a valid integer, set it.
             if (dataFromQuery != null)
                 if (Int32.TryParse(dataFromQuery, out int integerValue))
                     data = integerValue;
@@ -36,9 +29,6 @@ namespace AppNiZiAPI.Models.Handler
             return data;
         }
 
-        /// <summary>
-        /// Checks if a string can be converted to integer, and logs it if it doesn't as an error.
-        /// </summary>
         public bool IsValidInteger(Dictionary<ServiceDictionaryKey, object> dictionary, string text)
         {
             bool success = Int32.TryParse(text, out int integerValue);
@@ -49,10 +39,6 @@ namespace AppNiZiAPI.Models.Handler
             return success;
         }
 
-        /// <summary>
-        /// Checks if a passed 'id' is considered valid, meaning: can be converted to int and is higher than 0.
-        /// Logs it if it doesn't for feedback to API user.
-        /// </summary>
         public bool IsValidId(Dictionary<ServiceDictionaryKey, object> dictionary, string idText)
         {
             if (!IsValidInteger(dictionary, idText))

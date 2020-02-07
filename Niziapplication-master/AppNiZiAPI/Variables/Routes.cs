@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AppNiZiAPI.Variables
+﻿namespace AppNiZiAPI.Variables
 {
     public static class Routes
     {
@@ -22,20 +18,20 @@ namespace AppNiZiAPI.Variables
 
         // Doctors
         public const string GetDoctorPatients = "/doctor/{doctorId}/patients";
-        public const string SpecificDoctor = "/doctor/{doctorId}"; // GET, DELETE, PUT
-        public const string Doctor = "/doctor"; // GET, POST, DELETE
+        public const string SpecificDoctor = "/doctor/{doctorId}";
+        public const string Doctor = "/doctor"; 
         public const string DoctorMe = "/doctor/me";
 
         // Consumption
-        public const string Consumption = "/consumption/{consumptionId}"; // DELETE, GET, PUT
-        public const string Consumptions = "/consumptions"; // GET, POST
+        public const string Consumption = "/consumption/{consumptionId}"; 
+        public const string Consumptions = "/consumptions"; 
 
         // Water Consumption
         public const string PostWaterConsumption = "/waterconsumption";
 
         public const string GetDailyWaterConsumption = "/waterconsumption/daily/{patientId}";
         public const string GetWaterConsumptionPeriod = "/waterconsumption/period/{patientId}";
-        public const string SingleWaterConsumption = "/waterconsumption/{waterId}"; // GET, DELETE
+        public const string SingleWaterConsumption = "/waterconsumption/{waterId}";
 
         // DietaryManagement
         public const string DietaryManagement = "/dietaryManagement";
@@ -64,7 +60,6 @@ namespace AppNiZiAPI.Variables
         public const string Account = "/account";
         public const string LoginDoctor = "/login/doctor";
         public const string LoginPatient = "/login/patient";
-
 
     }
 }

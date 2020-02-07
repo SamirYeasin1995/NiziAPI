@@ -4,51 +4,38 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.IO;
-using Newtonsoft.Json.Linq;
 using AppNiZiAPI.Infrastructure;
 using AppNiZiAPI.Models.AccountModels;
 using AppNiZiAPI.Models;
-using Microsoft.AspNetCore.Mvc;
 using AppNiZiAPI.Models.AuthModels;
 
 namespace AppNiZiAPI.Security
 {
     class Authorization : IAuthorization
     {
-        /**
-         * Authorization Check for every call
-        */
         public async Task<AuthResultModel> CheckAuthorization(HttpRequest req, int userId = 0, bool isDoctor = false)
         {
-            // Get AuthentificationHeader from request
             AuthenticationHeaderValue.TryParse(req.Headers[HeaderNames.Authorization], out var authHeader);
 
             if (authHeader == null)
                 return new AuthResultModel(false, AuthStatusCode.Unauthorized);
 
-            // Token validation with Auth0 servers
             ClaimsPrincipal claims = await Auth0.ValidateTokenAsync(authHeader);
 
             if (claims == null)
                 return new AuthResultModel(false, AuthStatusCode.Unauthorized);
 
-            // Get Token Guid for Authorization
             string tokenGuid = claims.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
 
             IAuthorizationRepository authRepository = DIContainer.Instance.GetService<IAuthorizationRepository>();
 
-            // If userId needs to come from token, only calls the method GetAccountId if userId is zero
             if (userId == 0 && authRepository.GetUserId(tokenGuid, isDoctor) == 0)
                 return new AuthResultModel(false, AuthStatusCode.Forbidden);
 
-            // When a call is from a Doctor that needs info about a patient, the following method will be called
-            // UserId is here patientId
+
             if (isDoctor && authRepository.CheckDoctorAcces(userId, tokenGuid))
                 return new AuthResultModel(true, AuthStatusCode.Ok);
 
-            // When a call is from a patient of doctor and only ask for information about the same user the following method will be called
             if (userId != 0 && !authRepository.UserAuth(userId, tokenGuid, isDoctor))
                 return new AuthResultModel(false, AuthStatusCode.Forbidden);
 
@@ -120,19 +107,16 @@ namespace AppNiZiAPI.Security
         {
             AuthGUID authGUID = new AuthGUID();
             AuthResultModel authResult = new AuthResultModel(false, AuthStatusCode.Unauthorized);
-            // Get AuthentificationHeader from request
             AuthenticationHeaderValue.TryParse(req.Headers[HeaderNames.Authorization], out var authHeader);
 
             if (authHeader == null)
                 return new AuthGUID { AuthResult = authResult };
 
-            // Token validation with Auth0 servers
             ClaimsPrincipal claims = await Auth0.ValidateTokenAsync(authHeader);
 
             if (claims == null)
                 return new AuthGUID { AuthResult = authResult };
 
-            // Get Token Guid for Authorization
             string tokenGuid = claims.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
             authGUID.Acces = true;
             authGUID.GUID = tokenGuid;

@@ -1,5 +1,4 @@
-﻿using AppNiZiAPI.Infrastructure;
-using AppNiZiAPI.Models;
+﻿using AppNiZiAPI.Models;
 using AppNiZiAPI.Models.Handlers;
 using AppNiZiAPI.Models.Repositories;
 using AppNiZiAPI.Security;
@@ -9,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AppNiZiAPI.Services

@@ -1,6 +1,4 @@
-﻿using AppNiZiAPI.Variables;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -27,9 +25,7 @@ namespace AppNiZiAPI.Models.Repositories
                     SqlDataReader reader = await cmd.ExecuteReaderAsync();
                     while (reader.Read())
                     {
-                        // TODO OOOH doe dit anders indexes zo gevaarlijk
                         food.FoodId = (int)reader["id"];
-                        //food.Name = reader.GetString(1);
                         food.Name = (string)reader["name"];
                         food.KCal = (double)reader["kcal"];
                         food.Protein = (double)reader["protein"];
@@ -56,17 +52,13 @@ namespace AppNiZiAPI.Models.Repositories
                 conn.Open();
                 var text = $"SELECT TOP {count} * FROM Food Inner Join WeightUnit On  food.weight_unit_id = WeightUnit.id Where name LIKE '{foodname}%'";
                 SqlCommand sqlCmd = new SqlCommand(text, conn);
-                //sqlCmd.Parameters.Add("@COUNT", SqlDbType.Int).Value = count;
                 using (sqlCmd)
                 {
-                    //Todo limit dit met een count parameter anders gaan we straks 200 ap*** ophalen)
-                    //Done
                     SqlDataReader reader = await sqlCmd.ExecuteReaderAsync();
                     while (reader.Read())
                     {
                         Food food = new Food
                         {
-                            // Uit lezen bijv
                             FoodId = (int)reader["id"],
                             Name = (string)reader["name"],
                             KCal = (double)reader["kcal"],
@@ -149,7 +141,6 @@ namespace AppNiZiAPI.Models.Repositories
                     SqlCommand sqlCmd = new SqlCommand(sqlQuery.ToString(), conn);
                     sqlCmd.Parameters.Add(param1);
                     sqlCmd.Parameters.Add(param2);
-                    //TODO TEST DIT
                     rows = await sqlCmd.ExecuteNonQueryAsync();
                 }
                 conn.Close();

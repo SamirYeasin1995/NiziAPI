@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
 namespace AppNiZiAPI.Services.Handlers
 {
@@ -13,12 +11,9 @@ namespace AppNiZiAPI.Services.Handlers
 
     public class ResponseHandler : IResponseHandler
     {
-        /// <summary>
-        /// Forges an API response based on a given dictionary and returns it.
-        /// </summary>
+
         public IActionResult ForgeResponse(Dictionary<ServiceDictionaryKey, object> dictionary)
         {
-            // Default if no errors caught
             IActionResult actionResult = dictionary.ContainsKey(ServiceDictionaryKey.VALUE)
             ? (ActionResult)new OkObjectResult(dictionary[ServiceDictionaryKey.VALUE])
             : new BadRequestResult();
@@ -29,15 +24,10 @@ namespace AppNiZiAPI.Services.Handlers
             return actionResult;
         }
 
-        /// <summary>
-        /// Forges an API error response based on a given dictionary and returns it. 
-        /// Make sure you check if the dictionary contains an error first.
-        /// </summary>
         private IActionResult ForgeErrorResponse(Dictionary<ServiceDictionaryKey, object> dictionary)
         {
             IActionResult actionResult = new BadRequestObjectResult(dictionary[ServiceDictionaryKey.ERROR]);
 
-            // HttpStatusCode provided, so we handle that too
             if (dictionary.ContainsKey(ServiceDictionaryKey.HTTPSTATUSCODE))
             {
                 switch (dictionary[ServiceDictionaryKey.HTTPSTATUSCODE])

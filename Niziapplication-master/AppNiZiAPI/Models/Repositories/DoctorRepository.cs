@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using AppNiZiAPI.Infrastructure;
 
@@ -131,11 +130,9 @@ namespace AppNiZiAPI.Models.Repositories
         {
             IAccountRepository accountRepository = DIContainer.Instance.GetService<IAccountRepository>();
 
-            // Return null when GUID already exists in DB
             if (CheckIfExists(doctorLogin.Auth.Guid))
                 return null;
 
-            // Register First a new account, if there is an error the AccountId will be 0
             doctorLogin.Account.AccountId = accountRepository.RegisterAccount(doctorLogin.Doctor.FirstName, doctorLogin.Doctor.LastName, (int)Role.Doctor);
             if (doctorLogin.Account.AccountId == 0)
                 return null;

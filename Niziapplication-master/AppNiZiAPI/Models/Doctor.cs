@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace AppNiZiAPI.Models
+﻿namespace AppNiZiAPI.Models
 {
     public class DoctorModel
     {

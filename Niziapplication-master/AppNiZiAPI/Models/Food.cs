@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AppNiZiAPI.Models
+﻿namespace AppNiZiAPI.Models
 {
     public class Food
     {

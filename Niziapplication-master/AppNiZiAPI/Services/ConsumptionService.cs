@@ -31,7 +31,6 @@ namespace AppNiZiAPI.Services
 
             if (!CorrectConsumption(newConsumption)) return new BadRequestObjectResult(Messages.ErrorInvalidConsumptionObject);
 
-            // Auth check
             if (!await Authorised(req, newConsumption.PatientId, false)) return new BadRequestObjectResult(Messages.AuthNoAcces);
 
             if (await consumptionRepository.AddConsumption(newConsumption)) return new OkObjectResult(Messages.OKPost);
@@ -43,7 +42,6 @@ namespace AppNiZiAPI.Services
             if (!int.TryParse(consumptionId, out int id)) return new BadRequestObjectResult(Messages.ErrorIncorrectId);
 
             ConsumptionView targetConsumption = await consumptionRepository.GetConsumptionByConsumptionId(id);
-            // Auth check
             if (!await Authorised(req, targetConsumption.PatientId, true)) return new BadRequestObjectResult(Messages.AuthNoAcces);
 
             var consumptionJson = JsonConvert.SerializeObject(targetConsumption);
@@ -74,7 +72,7 @@ namespace AppNiZiAPI.Services
 
             if (!int.TryParse(patientIdString, out int patientId)) return new BadRequestObjectResult(Messages.ErrorIncorrectId);
 
-            // Auth check
+ 
             if (!await Authorised(req, patientId, true)) return new BadRequestObjectResult(Messages.AuthNoAcces);
 
             PatientConsumptionsView consumptions = new PatientConsumptionsView(await consumptionRepository.GetConsumptionsForPatientBetweenDates(patientId, startDate, endDate));
@@ -91,7 +89,6 @@ namespace AppNiZiAPI.Services
             ConsumptionView consumption = await consumptionRepository.GetConsumptionByConsumptionId(Id);
             int patientId = consumption.PatientId;
 
-            // Auth check
             if (!await Authorised(req, patientId, false)) return new BadRequestObjectResult(Messages.AuthNoAcces);
 
             if (await consumptionRepository.DeleteConsumption(Id, patientId)) return new OkObjectResult(Messages.OKDelete);
@@ -112,10 +109,9 @@ namespace AppNiZiAPI.Services
 
             if (!CorrectConsumption(updateConsumption)) return new BadRequestObjectResult(Messages.ErrorInvalidConsumptionObject);
 
-            // Check if updated consumption patientId equals target patientId
             if (updateConsumption.PatientId != targetPatientId) return new BadRequestObjectResult(Messages.ErrorPut);
 
-            // Auth check
+
             if (!await Authorised(req, targetPatientId, false)) return new BadRequestObjectResult(Messages.AuthNoAcces);
 
             if (await consumptionRepository.UpdateConsumption(Id, updateConsumption)) return new OkObjectResult(Messages.OKUpdate);

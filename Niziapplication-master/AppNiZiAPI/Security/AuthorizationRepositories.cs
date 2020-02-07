@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace AppNiZiAPI.Security
 {
     class AuthorizationRepository : IAuthorizationRepository
     {
-        // Checked wanneer patient info over hemzelf opvraagt. Wanneer een doctor het vraagt checked is eerst of ie wel toegang heeft bij de patient
         public bool HasAcces(int userId, string guid)
         {
             string sqlQuery =

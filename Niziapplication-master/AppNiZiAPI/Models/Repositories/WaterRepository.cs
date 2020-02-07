@@ -1,11 +1,8 @@
-﻿using AppNiZiAPI.Models.Handlers;
-using AppNiZiAPI.Models.Water;
-using AppNiZiAPI.Variables;
+﻿using AppNiZiAPI.Models.Water;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AppNiZiAPI.Models.Repositories
@@ -17,10 +14,9 @@ namespace AppNiZiAPI.Models.Repositories
 
         public async Task<WaterConsumptionDaily> GetDailyWaterConsumption(int patientId, DateTime date)
         {
-            // Make empty list
+
             List<WaterConsumptionViewModel> waterConsumptionViews;
 
-            // Using Async methodes and functions
             using (SqlConnection sqlCOnnection = new SqlConnection(Environment.GetEnvironmentVariable("sqldb_connection")))
             {
                 await sqlCOnnection.OpenAsync();

@@ -42,7 +42,6 @@ namespace AppNiZiAPI.Models.Repositories
                         while (reader.Read())
                         {
                             DietaryManagementModel dietaryManagementModel = new DietaryManagementModel();
-                            // Uit lezen bijv
                             dietaryManagementModel.Id = Int32.Parse(reader["id"].ToString());
                             dietaryManagementModel.Description = reader["description"].ToString();
                             dietaryManagementModel.Amount = Int32.Parse(reader["amount"].ToString());

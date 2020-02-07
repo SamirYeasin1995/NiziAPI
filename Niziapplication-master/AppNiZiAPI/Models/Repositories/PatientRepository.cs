@@ -24,9 +24,6 @@ namespace AppNiZiAPI.Models.Repositories
 
     public class PatientRepository : IPatientRepository
     {
-        /// <summary>
-        /// Select patient by ID.
-        /// </summary>
         public async Task<Patient> Select(int id)
         {
             if (id == 0)
@@ -92,9 +89,6 @@ namespace AppNiZiAPI.Models.Repositories
             return patient;
         }
 
-        /// <summary>
-        /// Select all patients, up to count amount.
-        /// </summary>
         public async Task<List<Patient>> List(int count)
         {
             if (count == 0)
@@ -136,7 +130,6 @@ namespace AppNiZiAPI.Models.Repositories
 
         public async Task<PatientLogin> RegisterPatient(PatientLogin newPatient)
         {
-            // Return null when GUID already exists in DB
             if (newPatient.Patient.Guid != null)
                 if (await CheckIfExists(newPatient.Patient.Guid))
                     return null;
@@ -181,7 +174,6 @@ namespace AppNiZiAPI.Models.Repositories
             {
                 SqlCommand sqlCmd = new SqlCommand(sqlQuery, sqlConn);
                 sqlCmd.Parameters.Add("@GUID", SqlDbType.NVarChar).Value = guid;
-                //sqlCmd.Parameters.Add("@DOCTERGUID", SqlDbType.NVarChar).Value = guid;
 
                 sqlConn.Open();
                 return (bool) await sqlCmd.ExecuteScalarAsync();

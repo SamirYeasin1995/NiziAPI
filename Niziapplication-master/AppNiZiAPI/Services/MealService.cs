@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AppNiZiAPI.Services
@@ -49,7 +48,6 @@ namespace AppNiZiAPI.Services
             int mealId = 0;
             try
             {
-                //TODO haal patient id op een coole manier op
                 mealId = Convert.ToInt32(request.Query["mealId"].ToString());
                 patientId = Convert.ToInt32(request.Query["patientId"].ToString());
             }

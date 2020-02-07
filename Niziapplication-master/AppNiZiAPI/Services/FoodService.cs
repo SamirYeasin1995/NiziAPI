@@ -1,5 +1,4 @@
 ﻿using AppNiZiAPI.Models;
-using AppNiZiAPI.Models.AccountModels;
 using AppNiZiAPI.Models.Handler;
 using AppNiZiAPI.Models.Handlers;
 using AppNiZiAPI.Models.Repositories;
@@ -9,7 +8,6 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AppNiZiAPI.Services
@@ -49,7 +47,6 @@ namespace AppNiZiAPI.Services
             int patientId = 0;
             try
             {
-                //TODO haal patient id op een coole manier op
                 foodId = Convert.ToInt32(request.Query["foodId"].ToString());
                 patientId = Convert.ToInt32(request.Query["patientId"].ToString());
             }

@@ -1,10 +1,8 @@
 ﻿using AppNiZiAPI.Models.AccountModels;
 using AppNiZiAPI.Models.Enum;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace AppNiZiAPI.Models.Repositories
 {
@@ -28,7 +26,7 @@ namespace AppNiZiAPI.Models.Repositories
             }
         }
 
-        // Returned new account id
+   
         public int RegisterAccount(string firstName, string lastName, int role)
         {
             string sqlQuery =

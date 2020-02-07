@@ -125,7 +125,6 @@ namespace AppNiZiAPI.Models.Repositories
                     {
                         Meal meal = new Meal
                         {
-                            // Uit lezen bijv
                             MealId = (int)reader["id"],
                             PatientId = (int)reader["patient_id"],
                             Name = (string)reader["name"],

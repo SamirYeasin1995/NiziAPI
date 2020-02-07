@@ -1,15 +1,12 @@
 ﻿using AppNiZiAPI.Models;
-using AppNiZiAPI.Models.AccountModels;
 using AppNiZiAPI.Models.Handler;
 using AppNiZiAPI.Models.Handlers;
 using AppNiZiAPI.Models.Repositories;
 using AppNiZiAPI.Services.Helpers;
 using AppNiZiAPI.Services.Serializer;
-using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AppNiZiAPI.Services

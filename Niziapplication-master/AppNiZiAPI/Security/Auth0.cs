@@ -5,7 +5,6 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -60,9 +59,6 @@ namespace AppNiZiAPI.Security
                 }
                 catch (SecurityTokenSignatureKeyNotFoundException ex1)
                 {
-                    // This exception is thrown if the signature key of the JWT could not be found.
-                    // This could be the case when the issuer changed its signing keys, so we trigger a 
-                    // refresh and retry validation.
                     _configurationManager.RequestRefresh();
                     tries++;
                 }
@@ -72,8 +68,6 @@ namespace AppNiZiAPI.Security
                 }
                 catch (Exception e)
                 {
-                    // Geen geldige token
-                    Console.WriteLine(e.Message);
                     return null;
                 }
             }
