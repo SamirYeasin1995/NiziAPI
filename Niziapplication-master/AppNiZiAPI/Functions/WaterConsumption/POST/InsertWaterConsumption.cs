@@ -13,7 +13,6 @@ using AppNiZiAPI.Models;
 using Microsoft.Extensions.DependencyInjection;
 using AppNiZiAPI.Models.Repositories;
 using AppNiZiAPI.Infrastructure;
-using AppNiZiAPI.Models.Handlers;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Enums;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
 using System.Net;

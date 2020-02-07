@@ -13,8 +13,6 @@ using AppNiZiAPI.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using AppNiZiAPI.Security;
-using System.IO;
-using Newtonsoft.Json.Linq;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
 using Microsoft.OpenApi.Models;
 using System.Net;
@@ -45,7 +43,6 @@ namespace AppNiZiAPI.Functions.WaterConsumption.GET
                     return new StatusCodeResult((int)authResult.StatusCode);
                 #endregion
  
-            // Parse Dates, could'nt work within one if statement because the out var
             if (!DateTime.TryParse(req.Query["beginDate"], out var parsedBeginDate))
                 return new StatusCodeResult(StatusCodes.Status400BadRequest);
             if (!DateTime.TryParse(req.Query["endDate"], out var parsedEndDate))

@@ -42,7 +42,6 @@ namespace AppNiZiAPI.Functions.Meal.POST
                 return new StatusCodeResult((int)authResult.StatusCode);
             #endregion
 
-
             Dictionary<ServiceDictionaryKey, object> dictionary = await DIContainer.Instance.GetService<IMealService>().TryAddMeal(patientId, req);
 
 

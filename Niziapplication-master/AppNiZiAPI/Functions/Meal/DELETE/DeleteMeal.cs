@@ -1,18 +1,11 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using AppNiZiAPI.Models.Repositories;
-using AppNiZiAPI.Models.Handlers;
 using AppNiZiAPI.Variables;
 using AppNiZiAPI.Security;
-
-
 using AppNiZiAPI.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using AppNiZiAPI.Models;
@@ -40,7 +33,6 @@ namespace AppNiZiAPI.Functions.Meal.DELETE
             ILogger log)
         {
             int patientId = await DIContainer.Instance.GetService<IAuthorization>().GetUserId(req);
-            // Auth check
             AuthResultModel authResult = await DIContainer.Instance.GetService<IAuthorization>().CheckAuthorization(req, patientId);
             if (!authResult.Result)
                 return new StatusCodeResult((int)authResult.StatusCode);

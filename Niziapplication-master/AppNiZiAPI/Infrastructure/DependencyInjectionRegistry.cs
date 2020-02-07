@@ -25,6 +25,7 @@ namespace AppNiZiAPI.Infrastructure
             services.AddSingleton<IMealRepository, MealRepository>();
             services.AddSingleton<IWaterRepository, WaterRepository>();
             services.AddSingleton<IConsumptionRepository, ConsumptionRespository>();
+            services.AddSingleton<IConversationRepository, ConversationRepository>();
 
             return services;
         }
@@ -47,7 +48,7 @@ namespace AppNiZiAPI.Infrastructure
             services.AddSingleton<IConsumptionService, ConsumptionService>();
             services.AddSingleton<IDietaryManagementService, DIetaryManagementService>();
             services.AddSingleton<IWaterService, WaterService>();
-
+            services.AddSingleton<IConversationService, ConversationService>();
             return services;
         }
     }

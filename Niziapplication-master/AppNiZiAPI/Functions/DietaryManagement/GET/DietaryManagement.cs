@@ -35,7 +35,6 @@ namespace AppNiZiAPI.Functions.DietaryManagement.GET
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = (Routes.APIVersion + Routes.GetDietaryManagement))] HttpRequest req, string patientId,
             ILogger log)
         {
-            //link voor swagger https://devkimchi.com/2019/02/02/introducing-swagger-ui-on-azure-functions/
 
             int id;
             if (!int.TryParse(patientId, out id))
@@ -48,9 +47,6 @@ namespace AppNiZiAPI.Functions.DietaryManagement.GET
             #endregion
 
             Dictionary<ServiceDictionaryKey, object> dictionary = await DIContainer.Instance.GetService<IDietaryManagementService>().TryGetDietaryManagementByPatient(id);
-
-
-
             return DIContainer.Instance.GetService<IResponseHandler>().ForgeResponse(dictionary);
         }
     }

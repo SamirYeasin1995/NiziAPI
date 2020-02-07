@@ -1,9 +1,6 @@
-using System;
-using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
-
 using Aliencube.AzureFunctions.Extensions.OpenApi;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Abstractions;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
@@ -15,8 +12,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi;
-
-using Newtonsoft.Json;
 
 namespace AppNiZiAPI.Functions
 {

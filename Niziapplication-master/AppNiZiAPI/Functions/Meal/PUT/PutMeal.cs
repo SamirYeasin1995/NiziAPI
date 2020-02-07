@@ -37,13 +37,11 @@ namespace AppNiZiAPI.Functions.Meal.PUT
             [HttpTrigger(AuthorizationLevel.Function, "put", Route = (Routes.APIVersion + Routes.PutMeal))] HttpRequest req,
             ILogger log,int patientId, int mealId)
         {
-            // Auth check
             AuthResultModel authResult = await DIContainer.Instance.GetService<IAuthorization>().CheckAuthorization(req, patientId);
             if (!authResult.Result)
                 return new StatusCodeResult((int)authResult.StatusCode);
 
             Dictionary<ServiceDictionaryKey, object> dictionary = await DIContainer.Instance.GetService<IMealService>().TryPutMeal(patientId,mealId,req);
-
 
             return DIContainer.Instance.GetService<IResponseHandler>().ForgeResponse(dictionary);
         }

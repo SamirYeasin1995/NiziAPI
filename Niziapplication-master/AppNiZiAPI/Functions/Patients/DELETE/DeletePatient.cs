@@ -1,21 +1,13 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using AppNiZiAPI.Variables;
-using System.Net.Http;
 using System.Net;
-using AppNiZiAPI.Models.Repositories;
-using AppNiZiAPI.Models.Handlers;
 using AppNiZiAPI.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using AppNiZiAPI.Security;
-using AppNiZiAPI.Models;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Enums;
 using Microsoft.OpenApi.Models;
@@ -43,11 +35,9 @@ namespace AppNiZiAPI.Functions.Patients.DELETE
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            // Logic
             Dictionary<ServiceDictionaryKey, object> dictionary = await DIContainer.Instance.GetService<IPatientService>()
                 .TryDeletePatient(req, patientId);
 
-            // Response
             return DIContainer.Instance.GetService<IResponseHandler>().ForgeResponse(dictionary);
         }
     }

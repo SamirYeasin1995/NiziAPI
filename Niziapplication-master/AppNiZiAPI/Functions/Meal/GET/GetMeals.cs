@@ -1,18 +1,13 @@
-using System;
-using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using AppNiZiAPI.Models;
-using AppNiZiAPI.Models.Repositories;
 using System.Collections.Generic;
 using AppNiZiAPI.Variables;
 using AppNiZiAPI.Security;
-
 using AppNiZiAPI.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Aliencube.AzureFunctions.Extensions.OpenApi.Attributes;
@@ -37,13 +32,11 @@ namespace AppNiZiAPI.Functions.Meal.GET
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = (Routes.APIVersion+Routes.GetMeals))] HttpRequest req,
             ILogger log,int patientId)
         {
-            // Auth check
             AuthResultModel authResult = await DIContainer.Instance.GetService<IAuthorization>().CheckAuthorization(req, patientId);
             if (!authResult.Result)
                 return new StatusCodeResult((int)authResult.StatusCode);
 
             Dictionary<ServiceDictionaryKey, object> dictionary = await DIContainer.Instance.GetService<IMealService>().TryGetMeals(patientId, req);
-
 
             return DIContainer.Instance.GetService<IResponseHandler>().ForgeResponse(dictionary);
         }
