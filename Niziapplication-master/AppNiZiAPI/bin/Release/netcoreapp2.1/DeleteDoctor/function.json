@@ -1,0 +1,18 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions-1.0.29",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "route": "v1/doctor/{doctorId}",
+      "methods": [
+        "delete"
+      ],
+      "authLevel": "anonymous",
+      "name": "req"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/AppNiZiAPI.dll",
+  "entryPoint": "AppNiZiAPI.Functions.Doctor.DELETE.DeleteDoctor.Run"
+}

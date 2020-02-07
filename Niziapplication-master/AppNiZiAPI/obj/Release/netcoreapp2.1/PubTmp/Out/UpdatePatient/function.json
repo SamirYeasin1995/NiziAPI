@@ -1,0 +1,19 @@
+{
+  "generatedBy": "Microsoft.NET.Sdk.Functions-1.0.29",
+  "configurationSource": "attributes",
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "route": "v1/patient",
+      "methods": [
+        "get",
+        "put"
+      ],
+      "authLevel": "function",
+      "name": "req"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "../bin/AppNiZiAPI.dll",
+  "entryPoint": "AppNiZiAPI.Functions.Patients.PUT.UpdatePatient.Run"
+}

@@ -1,0 +1,2 @@
+C:\Users\NL1_1893124059745\Downloads\Niziapplication-master\Niziapplication-master\AppNiZiAPI\obj\Debug\netcoreapp2.1\AppNiZiAPI.AssemblyInfoInputs.cache
+C:\Users\NL1_1893124059745\Downloads\Niziapplication-master\Niziapplication-master\AppNiZiAPI\obj\Debug\netcoreapp2.1\AppNiZiAPI.AssemblyInfo.cs
